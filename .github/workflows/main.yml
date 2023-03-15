@@ -1,0 +1,42 @@
+name: Run default Cypress Tests
+
+on:
+  # Run pipeline on every push
+  push:
+  # Run pipeline on a schedule, every morning at 5am, using cron syntax
+  schedule:
+    - cron: '0 5 * * *'
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node16.16.0-chrome107-ff107-edge
+    steps:
+      # Uses pre-existing github action to initialize pipeline
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Run all tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v5.3.0
+        with:
+          browser: chrome
+          headed: false
+          # config: baseUrl=https://something.com
+          # env: 
+          #   tags=@testTag,
+          #   envVariable=${{ secrets.ENV_VARIABLE_NAME }}
+
+      # - name: Save screenshots on fail
+      #   uses: actions/upload-artifacts@v3
+      #   if: failure()
+      #   with:
+      #     name: cypress-screenshots
+      #     path: cypress/screenshots
+
+      # - name: Save videos
+      #   uses: actions/upload-artifacts@v3
+      #   if: always()
+      #   with:
+      #     name: cypress-videos
+      #     path: cypress/videos
