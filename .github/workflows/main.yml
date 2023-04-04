@@ -64,3 +64,14 @@ jobs:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_branch: allure
           publish_dir: allure-history
+
+      - name: Send Allure report to Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          payload:
+            {
+              "text": "New <https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> has been generated"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
