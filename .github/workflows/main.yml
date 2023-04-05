@@ -69,6 +69,9 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
-          payload-file-path: "../payload-slack-content.json"
+          payload: |
+            {
+              "text": "New <https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> was just deployed."
+            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
