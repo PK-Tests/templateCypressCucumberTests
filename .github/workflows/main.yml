@@ -65,6 +65,9 @@ jobs:
           publish_branch: allure
           publish_dir: allure-history
 
+      - name: Format test results for slack payload
+        run: node format-test-results.js
+
       - name: Send Allure report to Slack channel
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
