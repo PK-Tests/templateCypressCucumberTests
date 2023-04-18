@@ -25,6 +25,10 @@
 			{
 				"type": "mrkdwn",
 				"text": "test text in different section"
+			},
+			{
+				"type": "mrkdwn",
+				"text": "test text 2 in different section"
 			}
 		]
 	}
