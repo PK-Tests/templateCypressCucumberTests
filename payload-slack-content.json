@@ -3,33 +3,36 @@
 		"type": "header",
 		"text": {
 			"type": "plain_text",
-			"text": "New test result"
-		} 
+			"text": "New request"
+		}
 	},
 	{
 		"type": "section",
 		"fields": [
 			{
 				"type": "mrkdwn",
-				"text": "<https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> was just deployed."
+				"text": "*Type:*\nPaid Time Off"
 			},
 			{
 				"type": "mrkdwn",
-				"text": "test text 2 in same section"
+				"text": "*Created by:*\n<example.com|Fred Enriquez>"
 			}
 		]
 	},
-    {
+	{
 		"type": "section",
 		"fields": [
 			{
 				"type": "mrkdwn",
-				"text": "test text in different section"
-			},
-			{
-				"type": "mrkdwn",
-				"text": "test text 2 in different section"
+				"text": "*When:*\nAug 10 - Aug 13"
 			}
 		]
+	},
+	{
+		"type": "section",
+		"text": {
+			"type": "mrkdwn",
+			"text": "<https://example.com|View request>"
+		}
 	}
 ]
