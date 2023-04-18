@@ -3,7 +3,7 @@
 		"type": "header",
 		"text": {
 			"type": "plain_text",
-			"text": "New <https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> was just deployed."
+			"text": "New test result"
 		} 
 	},
 	{
@@ -11,7 +11,7 @@
 		"fields": [
 			{
 				"type": "mrkdwn",
-				"text": "test text in same section"
+				"text": "<https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> was just deployed."
 			},
 			{
 				"type": "mrkdwn",
