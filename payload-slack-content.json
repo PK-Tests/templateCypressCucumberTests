@@ -1,3 +1,204 @@
-{
-    "text": "New <https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> was just deployed."
-}
+[
+    {
+        "text": "New <https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> was just deployed."
+    },
+    [
+        [
+            {
+                "suiteName": "example to-do app"
+            }
+        ],
+        [
+            {
+                "testName": "displays two todo items by default",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "displays two todo items by default",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "can add new todo items",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "can check off an item as completed",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "with a checked task"
+            }
+        ],
+        [
+            {
+                "testName": "can add new todo items",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "displays two todo items by default",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "can add new todo items",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "can check off an item as completed",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "with a checked task"
+            }
+        ],
+        [
+            {
+                "testName": "can check off an item as completed",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "displays two todo items by default",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "can add new todo items",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "can check off an item as completed",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "with a checked task"
+            }
+        ],
+        [
+            {
+                "testName": "with a checked task"
+            }
+        ],
+        [
+            {
+                "testName": "displays two todo items by default",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "can add new todo items",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "can check off an item as completed",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "with a checked task"
+            }
+        ],
+        [
+            {
+                "suiteName": "Location"
+            }
+        ],
+        [
+            {
+                "testName": "cy.hash() - get the current URL hash",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "cy.hash() - get the current URL hash",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "cy.location() - get window.location",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "cy.url() - get the current URL",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "cy.location() - get window.location",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "cy.hash() - get the current URL hash",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "cy.location() - get window.location",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "cy.url() - get the current URL",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "cy.url() - get the current URL",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "cy.hash() - get the current URL hash",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "cy.location() - get window.location",
+                "status": "passed"
+            }
+        ],
+        [
+            {
+                "testName": "cy.url() - get the current URL",
+                "status": "passed"
+            }
+        ]
+    ]
+]
