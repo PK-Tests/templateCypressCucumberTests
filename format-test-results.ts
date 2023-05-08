@@ -1,4 +1,4 @@
-import fs from 'fs';
+import * as fs from 'fs';
 
 function parseTestResults() {
     // Reads and parses original test report
@@ -42,8 +42,13 @@ function parseTestResults() {
     });
 
     // Turns resuls back to JSON and writes them to new file
-    const formattedResults = JSON.stringify(testResults, null, 2);
-    fs.writeFileSync('formatted-test-results.json', formattedResults);
+    // const formattedResults = JSON.stringify(testResults, null, 2);
+    const formattedResults = JSON.stringify({
+        text: `New <https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> was just deployed.\n
+        ${testResults.join('\n')}`
+    }, null, 2)
+    console.log(formattedResults)
+    fs.writeFileSync('payload-slack-content.json', formattedResults);
 }
 
 parseTestResults();
