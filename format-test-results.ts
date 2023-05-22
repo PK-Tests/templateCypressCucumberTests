@@ -25,7 +25,7 @@ function parseTestResults() {
             } else {
                 icon = '\n   :page_facing_up:';
             }
-            result = `     ${icon} ${testName}\n`;
+            result = `        ${icon} ${testName}\n`;
             testResults = testResults.concat('', result);
 
             suite.children.forEach((nestedTest: any) => {
@@ -39,7 +39,7 @@ function parseTestResults() {
                 } else {
                     icon = '\n   :page_facing_up:';
                 }
-                result = `     ${icon} ${testName}\n`;
+                result = `        ${icon} ${testName}\n`;
                 testResults = testResults.concat('', result);
             });
         });
