@@ -11,7 +11,7 @@ function parseTestResults() {
     data.children.forEach((suite: any) => {
         let result: string = '';
         const suiteName = suite.name;
-        result = `:file_folder: *${suiteName}*:\n`
+        result = `\n:file_folder: *${suiteName}*:\n`
         testResults = testResults.concat('', result);
 
         suite.children.forEach((test: any) => {
@@ -23,9 +23,9 @@ function parseTestResults() {
             } else if (status === 'failed') {
                 icon = ':x:';
             } else {
-                icon = '\n:page_facing_up:';
+                icon = '\n   :page_facing_up:';
             }
-            result = `${icon} ${testName}\n`;
+            result = `     ${icon} ${testName}\n`;
             testResults = testResults.concat('', result);
 
             suite.children.forEach((nestedTest: any) => {
@@ -37,9 +37,9 @@ function parseTestResults() {
                 } else if (status === 'failed') {
                     icon = ':x:';
                 } else {
-                    icon = '\n:page_facing_up:';
+                    icon = '\n   :page_facing_up:';
                 }
-                result = `${icon} ${testName}\n`;
+                result = `     ${icon} ${testName}\n`;
                 testResults = testResults.concat('', result);
             });
         });
@@ -48,7 +48,7 @@ function parseTestResults() {
     // Turns resuls back to JSON and writes them to new file
     const slackPayload = {
         text: `New <https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> was just deployed.\n
-        Results:\n
+        \n
         ${testResults}\n`
     }
     fs.writeFileSync('payload-slack-content.json', JSON.stringify(slackPayload));
