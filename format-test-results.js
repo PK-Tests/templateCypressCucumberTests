@@ -33,8 +33,8 @@ function parseTestResults() {
     data.children.forEach((suite) => {
         let result = '';
         const suiteName = suite.name;
-        result = `---\n:file_folder: __${suiteName}:__`;
-        testResults = testResults.concat('\n\n', result);
+        result = `:file_folder: *${suiteName}*:\n`;
+        testResults = testResults.concat(' \n', result);
         suite.children.forEach((test) => {
             const testName = test.name;
             const status = test.status;
@@ -46,7 +46,7 @@ function parseTestResults() {
                 icon = ':x:';
             }
             else {
-                icon = ':page_with_curl:';
+                icon = ':label:';
             }
             result = `${icon} ${testName}`;
             testResults = testResults.concat('\n', result);
@@ -61,7 +61,7 @@ function parseTestResults() {
                     icon = ':x:';
                 }
                 else {
-                    icon = ':page_with_curl:';
+                    icon = ':label:';
                 }
                 result = `${icon} ${testName}`;
                 testResults = testResults.concat('\n', result);
