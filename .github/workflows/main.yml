@@ -66,11 +66,13 @@ jobs:
           publish_dir: allure-history
 
       - name: Format test results for slack payload
+        if: always()
         run: node format-test-results.js
 
       - name: Send Allure report to Slack channel
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
+        if: always()
         with:
           payload-file-path: "payload-slack-content.json"
         env:

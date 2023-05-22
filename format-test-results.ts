@@ -23,9 +23,9 @@ function parseTestResults() {
             } else if (status === 'failed') {
                 icon = ':red_circle:';
             } else {
-                icon = '\n   :arrow_lower_right:';
+                icon = '\n:arrow_lower_right:';
             }
-            result = `        ${icon} ${testName}`;
+            result = `${icon} ${testName}`;
             testResults = testResults.concat('\n', result);
 
             suite.children.forEach((nestedTest: any) => {
@@ -37,9 +37,9 @@ function parseTestResults() {
                 } else if (status === 'failed') {
                     icon = ':red_circle:';
                 } else {
-                    icon = '\n   :arrow_lower_right:';
+                    icon = '\n:arrow_lower_right:';
                 }
-                result = `        ${icon} ${testName}`;
+                result = `${icon} ${testName}`;
                 testResults = testResults.concat('\n', result);
             });
         });

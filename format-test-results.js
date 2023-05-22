@@ -46,9 +46,9 @@ function parseTestResults() {
                 icon = ':red_circle:';
             }
             else {
-                icon = '\n   :arrow_lower_right:';
+                icon = '\n:arrow_lower_right:';
             }
-            result = `        ${icon} ${testName}`;
+            result = `${icon} ${testName}`;
             testResults = testResults.concat('\n', result);
             suite.children.forEach((nestedTest) => {
                 const testName = nestedTest.name;
@@ -61,9 +61,9 @@ function parseTestResults() {
                     icon = ':red_circle:';
                 }
                 else {
-                    icon = '\n   :arrow_lower_right:';
+                    icon = '\n:arrow_lower_right:';
                 }
-                result = `        ${icon} ${testName}`;
+                result = `${icon} ${testName}`;
                 testResults = testResults.concat('\n', result);
             });
         });
