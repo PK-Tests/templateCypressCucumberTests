@@ -24,7 +24,7 @@ context('Actions', () => {
 
       // Delay each keypress by 0.1 sec
       .type('slow.typing@email.com', { delay: 100 })
-      .should('have.value', 'slow.typing@email.com')
+      .should('have.value', 'slow@email.com')
 
     cy.get('.action-disabled')
       // Ignore error checking prior to type
@@ -37,20 +37,20 @@ context('Actions', () => {
     // https://on.cypress.io/focus
     cy.get('.action-focus').focus()
       .should('have.class', 'focus')
-      .prev().should('have.attr', 'style', 'color: orange;')
+      .prev().should('have.attr', 'style', 'color: green;')
   })
 
   it('.blur() - blur off a DOM element', () => {
     // https://on.cypress.io/blur
     cy.get('.action-blur').type('About to blur').blur()
       .should('have.class', 'error')
-      .prev().should('have.attr', 'style', 'color: red;')
+      .prev().should('have.attr', 'style', 'color: orange;')
   })
 
   it('.clear() - clears an input or textarea element', () => {
     // https://on.cypress.io/clear
     cy.get('.action-clear').type('Clear this text')
-      .should('have.value', 'Clear this text')
+      .should('have.value', 'Clear  text')
       .clear()
       .should('have.value', '')
   })
@@ -61,7 +61,7 @@ context('Actions', () => {
       .find('[type="text"]').type('HALFOFF')
 
     cy.get('.action-form').submit()
-      .next().should('contain', 'Your form has been submitted!')
+      .next().should('contain', 'Your has been submitted!')
   })
 
   it('.click() - click on a DOM element', () => {
