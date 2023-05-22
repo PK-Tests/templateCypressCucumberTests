@@ -28,35 +28,43 @@ function parseTestResults() {
     // Reads and parses original test report
     const rawData = fs.readFileSync('allure-report/data/suites.json');
     const data = JSON.parse(rawData.toString());
-    const testResults = [];
+    const testResults = '';
     // Uses only values for each test suite name, test name and test result
     data.children.forEach((suite) => {
-        let result = [];
+        let result = '';
         const suiteName = suite.name;
-        result = [
-            { suiteName }
-        ];
-        testResults.push(result);
+        result = `${suiteName}: \n`;
+        testResults.concat('', result);
         suite.children.forEach((test) => {
             const testName = test.name;
             const status = test.status;
-            result = [
-                {
-                    testName,
-                    status
-                }
-            ];
-            testResults.push(result);
+            let icon = '';
+            if (status === 'success') {
+                icon = ':white_check_mark:';
+            }
+            else if (status === 'failed') {
+                icon = ':x:';
+            }
+            else {
+                icon = ':warning:';
+            }
+            result = `${testName} ${icon}\n`;
+            testResults.concat('', result);
             suite.children.forEach((nestedTest) => {
                 const testName = nestedTest.name;
                 const status = nestedTest.status;
-                result = [
-                    {
-                        testName,
-                        status
-                    }
-                ];
-                testResults.push(result);
+                let icon = '';
+                if (status === 'success') {
+                    icon = ':white_check_mark:';
+                }
+                else if (status === 'failed') {
+                    icon = ':x:';
+                }
+                else {
+                    icon = ':warning:';
+                }
+                result = `${testName} ${icon}\n`;
+                testResults.concat('', result);
             });
         });
     });
