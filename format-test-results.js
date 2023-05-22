@@ -34,7 +34,7 @@ function parseTestResults() {
         let result = '';
         const suiteName = suite.name;
         result = `:file_folder: *${suiteName}*:\n`;
-        testResults = testResults.concat(' \n', result);
+        testResults = testResults.concat('', result);
         suite.children.forEach((test) => {
             const testName = test.name;
             const status = test.status;
@@ -48,8 +48,8 @@ function parseTestResults() {
             else {
                 icon = '\n:page_facing_up:';
             }
-            result = `${icon} ${testName}`;
-            testResults = testResults.concat('\n', result);
+            result = `${icon} ${testName}\n`;
+            testResults = testResults.concat('', result);
             suite.children.forEach((nestedTest) => {
                 const testName = nestedTest.name;
                 const status = nestedTest.status;
@@ -64,7 +64,7 @@ function parseTestResults() {
                     icon = '\n:page_facing_up:';
                 }
                 result = `${icon} ${testName}\n`;
-                testResults = testResults.concat('\n', result);
+                testResults = testResults.concat('', result);
             });
         });
     });
