@@ -23,7 +23,7 @@ function parseTestResults() {
             } else if (status === 'failed') {
                 icon = ':x:';
             } else {
-                icon = ':label:';
+                icon = '\n:page_facing_up:';
             }
             result = `${icon} ${testName}`;
             testResults = testResults.concat('\n', result);
@@ -37,9 +37,9 @@ function parseTestResults() {
                 } else if (status === 'failed') {
                     icon = ':x:';
                 } else {
-                    icon = ':label:';
+                    icon = '\n:page_facing_up:';
                 }
-                result = `${icon} ${testName}`;
+                result = `${icon} ${testName}\n`;
                 testResults = testResults.concat('\n', result);
             });
         });
