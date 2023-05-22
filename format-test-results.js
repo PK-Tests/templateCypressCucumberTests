@@ -33,8 +33,8 @@ function parseTestResults() {
     data.children.forEach((suite) => {
         let result = '';
         const suiteName = suite.name;
-        result = `${suiteName}: \n`;
-        testResults = testResults.concat('', result);
+        result = `${suiteName}:`;
+        testResults = testResults.concat('\n', result);
         suite.children.forEach((test) => {
             const testName = test.name;
             const status = test.status;
@@ -48,8 +48,8 @@ function parseTestResults() {
             else {
                 icon = ':warning:';
             }
-            result = `${testName} ${icon}\n`;
-            testResults = testResults.concat('', result);
+            result = `${testName} ${icon}`;
+            testResults = testResults.concat('\n', result);
             suite.children.forEach((nestedTest) => {
                 const testName = nestedTest.name;
                 const status = nestedTest.status;
@@ -63,8 +63,8 @@ function parseTestResults() {
                 else {
                     icon = ':warning:';
                 }
-                result = `${testName} ${icon}\n`;
-                testResults = testResults.concat('', result);
+                result = `${testName} ${icon}`;
+                testResults = testResults.concat('\n', result);
             });
         });
     });
@@ -75,20 +75,5 @@ function parseTestResults() {
         ${testResults}`
     };
     fs.writeFileSync('payload-slack-content.json', JSON.stringify(slackPayload));
-    //const url =
-    //  'https://hooks.slack.com/services/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';
-    //request.post(
-    //  {
-    //    url: url,
-    //  body: JSON.stringify(JSON.stringify(slackPayload)),
-    //},
-    //(err: any, response: any, body: any) => {
-    //    if (err) {
-    //      console.log(err);
-    //} else {
-    //  console.log('Message sent to Slack');
-    //}
-    //}
-    //);
 }
 parseTestResults();
