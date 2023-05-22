@@ -11,8 +11,8 @@ function parseTestResults() {
     data.children.forEach((suite: any) => {
         let result: string = '';
         const suiteName = suite.name;
-        result = `${suiteName}:`
-        testResults = testResults.concat('\n', result);
+        result = `*** \n:file_folder: **${suiteName}:**`
+        testResults = testResults.concat('\n\n', result);
 
         suite.children.forEach((test: any) => {
             const testName = test.name;
@@ -25,7 +25,7 @@ function parseTestResults() {
             } else {
                 icon = ':warning:';
             }
-            result = `${testName} ${icon}`;
+            result = `${icon} ${testName}`;
             testResults = testResults.concat('\n', result);
 
             suite.children.forEach((nestedTest: any) => {
@@ -39,7 +39,7 @@ function parseTestResults() {
                 } else {
                     icon = ':warning:';
                 }
-                result = `${testName} ${icon}`;
+                result = `${icon} ${testName}`;
                 testResults = testResults.concat('\n', result);
             });
         });
@@ -49,7 +49,7 @@ function parseTestResults() {
     const slackPayload = {
         text: `New <https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> was just deployed.\n
         Results:\n
-        ${testResults}`
+        ${testResults}\n`
     }
     fs.writeFileSync('payload-slack-content.json', JSON.stringify(slackPayload));
 }
