@@ -5,14 +5,14 @@ function parseTestResults() {
     const rawData = fs.readFileSync('allure-report/data/suites.json');
     const data = JSON.parse(rawData.toString());
 
-    const testResults: string = '';
+    let testResults: string = '';
 
     // Uses only values for each test suite name, test name and test result
     data.children.forEach((suite: any) => {
         let result: string = '';
         const suiteName = suite.name;
         result = `${suiteName}: \n`
-        testResults.concat('', result);
+        testResults = testResults.concat('', result);
 
         suite.children.forEach((test: any) => {
             const testName = test.name;
@@ -26,7 +26,7 @@ function parseTestResults() {
                 icon = ':warning:';
             }
             result = `${testName} ${icon}\n`;
-            testResults.concat('', result);
+            testResults = testResults.concat('', result);
 
             suite.children.forEach((nestedTest: any) => {
                 const testName = nestedTest.name;
@@ -40,7 +40,7 @@ function parseTestResults() {
                     icon = ':warning:';
                 }
                 result = `${testName} ${icon}\n`;
-                testResults.concat('', result);
+                testResults = testResults.concat('', result);
             });
         });
     });
