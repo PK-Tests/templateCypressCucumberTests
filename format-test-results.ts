@@ -11,7 +11,7 @@ function parseTestResults() {
     data.children.forEach((suite: any) => {
         let result: string = '';
         const suiteName = suite.name;
-        result = `*** \n:file_folder: **${suiteName}:**`
+        result = `\*\*\* \n:file_folder: \*\*${suiteName}:\*\*`
         testResults = testResults.concat('\n\n', result);
 
         suite.children.forEach((test: any) => {
