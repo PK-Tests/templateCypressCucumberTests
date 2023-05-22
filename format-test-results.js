@@ -33,38 +33,38 @@ function parseTestResults() {
     data.children.forEach((suite) => {
         let result = '';
         const suiteName = suite.name;
-        result = `\n:file_folder: *${suiteName}*:\n`;
+        result = `\n:arrow_right: *${suiteName}*:\n`;
         testResults = testResults.concat('', result);
         suite.children.forEach((test) => {
             const testName = test.name;
             const status = test.status;
             let icon = '';
             if (status === 'passed') {
-                icon = ':white_check_mark:';
+                icon = ':large_green_circle:';
             }
             else if (status === 'failed') {
-                icon = ':x:';
+                icon = ':red_circle:';
             }
             else {
-                icon = '\n   :page_facing_up:';
+                icon = '\n   :arrow_lower_right:';
             }
-            result = `     ${icon} ${testName}\n`;
-            testResults = testResults.concat('', result);
+            result = `        ${icon} ${testName}`;
+            testResults = testResults.concat('\n', result);
             suite.children.forEach((nestedTest) => {
                 const testName = nestedTest.name;
                 const status = nestedTest.status;
                 let icon = '';
                 if (status === 'passed') {
-                    icon = ':white_check_mark:';
+                    icon = ':large_green_circle:';
                 }
                 else if (status === 'failed') {
-                    icon = ':x:';
+                    icon = ':red_circle:';
                 }
                 else {
-                    icon = '\n   :page_facing_up:';
+                    icon = '\n   :arrow_lower_right:';
                 }
-                result = `     ${icon} ${testName}\n`;
-                testResults = testResults.concat('', result);
+                result = `        ${icon} ${testName}`;
+                testResults = testResults.concat('\n', result);
             });
         });
     });

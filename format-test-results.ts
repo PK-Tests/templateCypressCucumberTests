@@ -11,7 +11,7 @@ function parseTestResults() {
     data.children.forEach((suite: any) => {
         let result: string = '';
         const suiteName = suite.name;
-        result = `\n:file_folder: *${suiteName}*:\n`
+        result = `\n:arrow_right: *${suiteName}*:\n`
         testResults = testResults.concat('', result);
 
         suite.children.forEach((test: any) => {
@@ -19,28 +19,28 @@ function parseTestResults() {
             const status = test.status;
             let icon = '';
             if (status === 'passed') {
-                icon = ':white_check_mark:';
+                icon = ':large_green_circle:';
             } else if (status === 'failed') {
-                icon = ':x:';
+                icon = ':red_circle:';
             } else {
-                icon = '\n   :page_facing_up:';
+                icon = '\n   :arrow_lower_right:';
             }
-            result = `\n        ${icon} ${testName}`;
-            testResults = testResults.concat('', result);
+            result = `        ${icon} ${testName}`;
+            testResults = testResults.concat('\n', result);
 
             suite.children.forEach((nestedTest: any) => {
                 const testName = nestedTest.name;
                 const status = nestedTest.status;
                 let icon = '';
                 if (status === 'passed') {
-                    icon = ':white_check_mark:';
+                    icon = ':large_green_circle:';
                 } else if (status === 'failed') {
-                    icon = ':x:';
+                    icon = ':red_circle:';
                 } else {
-                    icon = '\n   :page_facing_up:';
+                    icon = '\n   :arrow_lower_right:';
                 }
-                result = `\n        ${icon} ${testName}`;
-                testResults = testResults.concat('', result);
+                result = `        ${icon} ${testName}`;
+                testResults = testResults.concat('\n', result);
             });
         });
     });
