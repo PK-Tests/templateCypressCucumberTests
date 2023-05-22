@@ -42,13 +42,13 @@ function parseTestResults() {
     });
 
     // Turns resuls back to JSON and writes them to new file
-    // const formattedResults = JSON.stringify(testResults, null, 2);
-    const formattedResults = JSON.stringify({
+    const formattedResults = JSON.stringify(testResults, null, 2)
+    const slackPayload = {
         text: `New <https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> was just deployed.\n
-        ${testResults.join('\n')}`
-    }, null, 2)
-    console.log(formattedResults)
-    fs.writeFileSync('payload-slack-content.json', formattedResults);
+        Results:\n
+        ${formattedResults}`
+    }
+    fs.writeFileSync('payload-slack-content.json', JSON.stringify(slackPayload));
 }
 
 parseTestResults();

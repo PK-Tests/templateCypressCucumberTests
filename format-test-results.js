@@ -1,36 +1,59 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var fs = require("fs");
+const fs = __importStar(require("fs"));
 function parseTestResults() {
     // Reads and parses original test report
-    var rawData = fs.readFileSync('allure-report/data/suites.json');
-    var data = JSON.parse(rawData.toString());
-    var testResults = [];
+    const rawData = fs.readFileSync('allure-report/data/suites.json');
+    const data = JSON.parse(rawData.toString());
+    const testResults = [];
     // Uses only values for each test suite name, test name and test result
-    data.children.forEach(function (suite) {
-        var result = [];
-        var suiteName = suite.name;
+    data.children.forEach((suite) => {
+        let result = [];
+        const suiteName = suite.name;
         result = [
-            { suiteName: suiteName }
+            { suiteName }
         ];
         testResults.push(result);
-        suite.children.forEach(function (test) {
-            var testName = test.name;
-            var status = test.status;
+        suite.children.forEach((test) => {
+            const testName = test.name;
+            const status = test.status;
             result = [
                 {
-                    testName: testName,
-                    status: status
+                    testName,
+                    status
                 }
             ];
             testResults.push(result);
-            suite.children.forEach(function (nestedTest) {
-                var testName = nestedTest.name;
-                var status = nestedTest.status;
+            suite.children.forEach((nestedTest) => {
+                const testName = nestedTest.name;
+                const status = nestedTest.status;
                 result = [
                     {
-                        testName: testName,
-                        status: status
+                        testName,
+                        status
                     }
                 ];
                 testResults.push(result);
@@ -38,11 +61,12 @@ function parseTestResults() {
         });
     });
     // Turns resuls back to JSON and writes them to new file
-    // const formattedResults = JSON.stringify(testResults, null, 2);
-    var formattedResults = JSON.stringify({
-        text: "New <https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> was just deployed.\n\n        ".concat(testResults.join('\n'))
-    }, null, 2);
-    console.log(formattedResults);
-    fs.writeFileSync('payload-slack-content.json', formattedResults);
+    const formattedResults = JSON.stringify(testResults, null, 2);
+    const slackPayload = {
+        text: `New <https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> was just deployed.\n
+        Results:\n
+        ${formattedResults}`
+    };
+    fs.writeFileSync('payload-slack-content.json', JSON.stringify(slackPayload));
 }
 parseTestResults();
