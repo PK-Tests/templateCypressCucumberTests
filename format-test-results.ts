@@ -11,7 +11,7 @@ function parseTestResults() {
     data.children.forEach((suite: any) => {
         let result: string = '';
         const suiteName = suite.name;
-        result = `\*\*\* \n:file_folder: \*\*${suiteName}:\*\*`
+        result = `---\n:file_folder: __${suiteName}:__`
         testResults = testResults.concat('\n\n', result);
 
         suite.children.forEach((test: any) => {
@@ -23,7 +23,7 @@ function parseTestResults() {
             } else if (status === 'failed') {
                 icon = ':x:';
             } else {
-                icon = ':warning:';
+                icon = ':page_with_curl:';
             }
             result = `${icon} ${testName}`;
             testResults = testResults.concat('\n', result);
@@ -37,7 +37,7 @@ function parseTestResults() {
                 } else if (status === 'failed') {
                     icon = ':x:';
                 } else {
-                    icon = ':warning:';
+                    icon = ':page_with_curl:';
                 }
                 result = `${icon} ${testName}`;
                 testResults = testResults.concat('\n', result);

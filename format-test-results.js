@@ -33,7 +33,7 @@ function parseTestResults() {
     data.children.forEach((suite) => {
         let result = '';
         const suiteName = suite.name;
-        result = `\*\*\* \n:file_folder: \*\*${suiteName}:\*\*`;
+        result = `---\n:file_folder: __${suiteName}:__`;
         testResults = testResults.concat('\n\n', result);
         suite.children.forEach((test) => {
             const testName = test.name;
@@ -46,7 +46,7 @@ function parseTestResults() {
                 icon = ':x:';
             }
             else {
-                icon = ':warning:';
+                icon = ':page_with_curl:';
             }
             result = `${icon} ${testName}`;
             testResults = testResults.concat('\n', result);
@@ -61,7 +61,7 @@ function parseTestResults() {
                     icon = ':x:';
                 }
                 else {
-                    icon = ':warning:';
+                    icon = ':page_with_curl:';
                 }
                 result = `${icon} ${testName}`;
                 testResults = testResults.concat('\n', result);
