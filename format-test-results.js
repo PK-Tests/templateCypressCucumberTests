@@ -52,23 +52,29 @@ function parseTestResults() {
             }
             result = `${icon} ${testName}\n`;
             testResults += result;
-            // nested tests
+            // nested suite
             if (test.children > 0) {
-                test.children.forEach((nestedTest) => {
-                    const testName = nestedTest.name;
-                    const status = nestedTest.status;
-                    let icon = '';
-                    if (status === 'passed') {
-                        icon = ':large_green_circle:';
-                    }
-                    else if (status === 'failed') {
-                        icon = ':red_circle:';
-                    }
-                    else {
-                        icon = '\n:arrow_lower_right:';
-                    }
-                    result = `${icon} ${testName}\n`;
+                test.children.forEach((nestedSuite) => {
+                    const nestedSuiteName = nestedSuite.name;
+                    result = `\n:arrow_lower_right: *${nestedSuiteName}*:\n`;
                     testResults += result;
+                    // nested tests
+                    nestedSuite.children.forEach((nestedTest) => {
+                        const nestedTestName = nestedTest.name;
+                        const nestedTestStatus = nestedTest.status;
+                        let icon = '';
+                        if (nestedTestStatus === 'passed') {
+                            icon = ':large_green_circle:';
+                        }
+                        else if (nestedTestStatus === 'failed') {
+                            icon = ':red_circle:';
+                        }
+                        else {
+                            icon = '\n:arrow_lower_right:';
+                        }
+                        result = `${icon} ${nestedTestName}\n`;
+                        testResults += result;
+                    });
                 });
             }
         });
