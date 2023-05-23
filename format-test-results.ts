@@ -9,11 +9,13 @@ function parseTestResults() {
 
     // Uses only values for each test suite name, test name and test result
     data.children.forEach((suite: any) => {
+        // suites
         let result: string = '';
         const suiteName = suite.name;
         result = `\n:arrow_right: *${suiteName}*:\n`
-        testResults = testResults.concat('', result);
+        testResults += result;
 
+        // tests
         suite.children.forEach((test: any) => {
             const testName = test.name;
             const status = test.status;
@@ -25,30 +27,32 @@ function parseTestResults() {
             } else {
                 icon = '\n:arrow_lower_right:';
             }
-            result = `${icon} ${testName}`;
-            testResults = testResults.concat('\n', result);
+            result = `${icon} ${testName}\n`;
+            testResults += result;
 
-            suite.children.forEach((nestedTest: any) => {
-                const testName = nestedTest.name;
-                const status = nestedTest.status;
-                let icon = '';
-                if (status === 'passed') {
-                    icon = ':large_green_circle:';
-                } else if (status === 'failed') {
-                    icon = ':red_circle:';
-                } else {
-                    icon = '\n:arrow_lower_right:';
-                }
-                result = `${icon} ${testName}`;
-                testResults = testResults.concat('\n', result);
-            });
+            // nested tests
+            if (test.children > 0) {
+                test.children.forEach((nestedTest: any) => {
+                    const testName = nestedTest.name;
+                    const status = nestedTest.status;
+                    let icon = '';
+                    if (status === 'passed') {
+                        icon = ':large_green_circle:';
+                    } else if (status === 'failed') {
+                        icon = ':red_circle:';
+                    } else {
+                        icon = '\n:arrow_lower_right:';
+                    }
+                    result = `${icon} ${testName}\n`;
+                    testResults += result;
+                });
+            }
         });
     });
 
     // Turns resuls back to JSON and writes them to new file
     const slackPayload = {
         text: `New <https://pk-tests.github.io/templateCypressCucumberTests/|Allure report> was just deployed.\n
-        \n
         ${testResults}\n`
     }
     fs.writeFileSync('payload-slack-content.json', JSON.stringify(slackPayload));
