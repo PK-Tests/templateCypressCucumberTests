@@ -24,32 +24,25 @@ function parseTestResults() {
                 icon = ':large_green_circle:';
             } else if (status === 'failed') {
                 icon = ':red_circle:';
+            } else {
+                icon = '\n:arrow_lower_right:';
             }
             result = `${icon} ${testName}\n`;
             testResults += result;
 
-            // nested suites
+            // nested tests
             if (test.children) {
-                test.children.forEach((nestedSuite: any) => {
-                    const nestedSuiteName = nestedSuite.name;
-                    result = `\n:arrow_lower_right: *${nestedSuiteName}*:\n`
-                    testResults += result;
-
-                    // nested tests
-                    if (nestedSuite.children) {
-                        nestedSuite.children.forEach((nestedTest: any) => {
-                            const nestedTestName = nestedTest.name;
-                            const nestedTestStatus = nestedTest.status;
-                            let icon = '';
-                            if (nestedTestStatus === 'passed') {
-                                icon = ':large_green_circle:';
-                            } else if (nestedTestStatus === 'failed') {
-                                icon = ':red_circle:';
-                            }
-                            result = `${icon} ${nestedTestName}\n`;
-                            testResults += result;
-                        });
+                test.children.forEach((nestedTest: any) => {
+                    const nestedTestName = nestedTest.name;
+                    const nestedTestStatus = nestedTest.status;
+                    let icon = '';
+                    if (nestedTestStatus === 'passed') {
+                        icon = ':large_green_circle:';
+                    } else if (nestedTestStatus === 'failed') {
+                        icon = ':red_circle:';
                     }
+                    result = `${icon} ${nestedTestName}\n`;
+                    testResults += result;
                 });
             }
         });
