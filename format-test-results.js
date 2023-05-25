@@ -59,10 +59,10 @@ function parseTestResults() {
                     const nestedTestStatus = nestedTest.status;
                     let icon = '';
                     if (nestedTestStatus === 'passed') {
-                        icon = '               :large_green_circle:';
+                        icon = '                  :large_green_circle:';
                     }
                     else if (nestedTestStatus === 'failed') {
-                        icon = '               :red_circle:';
+                        icon = '                  :red_circle:';
                     }
                     result = `${icon} ${nestedTestName}\n`;
                     testResults += result;
