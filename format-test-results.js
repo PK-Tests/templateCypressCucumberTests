@@ -42,15 +42,15 @@ function parseTestResults() {
             const status = test.status;
             let icon = '';
             if (status === 'passed') {
-                icon = ':large_green_circle:';
+                icon = '      :large_green_circle:';
             }
             else if (status === 'failed') {
-                icon = ':red_circle:';
+                icon = '      :red_circle:';
             }
             else {
-                icon = '\n:arrow_lower_right:';
+                icon = '\n            :arrow_lower_right:';
             }
-            result = `      ${icon} ${testName}\n`;
+            result = `${icon} ${testName}\n`;
             testResults += result;
             // nested tests
             if (test.children) {
@@ -59,12 +59,12 @@ function parseTestResults() {
                     const nestedTestStatus = nestedTest.status;
                     let icon = '';
                     if (nestedTestStatus === 'passed') {
-                        icon = ':large_green_circle:';
+                        icon = '               :large_green_circle:';
                     }
                     else if (nestedTestStatus === 'failed') {
-                        icon = ':red_circle:';
+                        icon = '               :red_circle:';
                     }
-                    result = `      ${icon} ${nestedTestName}\n`;
+                    result = `${icon} ${nestedTestName}\n`;
                     testResults += result;
                 });
             }
