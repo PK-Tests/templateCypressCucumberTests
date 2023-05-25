@@ -50,7 +50,7 @@ function parseTestResults() {
             else {
                 icon = '\n:arrow_lower_right:';
             }
-            result = `${icon} ${testName}\n`;
+            result = `      ${icon} ${testName}\n`;
             testResults += result;
             // nested tests
             if (test.children) {
@@ -64,7 +64,7 @@ function parseTestResults() {
                     else if (nestedTestStatus === 'failed') {
                         icon = ':red_circle:';
                     }
-                    result = `${icon} ${nestedTestName}\n`;
+                    result = `              ${icon} ${nestedTestName}\n`;
                     testResults += result;
                 });
             }
