@@ -30,8 +30,8 @@ function parseTestResults() {
             result = `${icon} ${testName}\n`;
             testResults += result;
 
-            // nested suite
-            if (test.children > 0) {
+            // nested suites
+            if (test.children) {
                 test.children.forEach((nestedSuite: any) => {
                     const nestedSuiteName = nestedSuite.name;
                     result = `\n:arrow_lower_right: *${nestedSuiteName}*:\n`
