@@ -47,34 +47,30 @@ function parseTestResults() {
             else if (status === 'failed') {
                 icon = ':red_circle:';
             }
-            else {
-                icon = '\n:arrow_lower_right:';
-            }
             result = `${icon} ${testName}\n`;
             testResults += result;
-            // nested suite
-            if (test.children > 0) {
+            // nested suites
+            if (test.children) {
                 test.children.forEach((nestedSuite) => {
                     const nestedSuiteName = nestedSuite.name;
                     result = `\n:arrow_lower_right: *${nestedSuiteName}*:\n`;
                     testResults += result;
                     // nested tests
-                    nestedSuite.children.forEach((nestedTest) => {
-                        const nestedTestName = nestedTest.name;
-                        const nestedTestStatus = nestedTest.status;
-                        let icon = '';
-                        if (nestedTestStatus === 'passed') {
-                            icon = ':large_green_circle:';
-                        }
-                        else if (nestedTestStatus === 'failed') {
-                            icon = ':red_circle:';
-                        }
-                        else {
-                            icon = '\n:arrow_lower_right:';
-                        }
-                        result = `${icon} ${nestedTestName}\n`;
-                        testResults += result;
-                    });
+                    if (nestedSuite.children) {
+                        nestedSuite.children.forEach((nestedTest) => {
+                            const nestedTestName = nestedTest.name;
+                            const nestedTestStatus = nestedTest.status;
+                            let icon = '';
+                            if (nestedTestStatus === 'passed') {
+                                icon = ':large_green_circle:';
+                            }
+                            else if (nestedTestStatus === 'failed') {
+                                icon = ':red_circle:';
+                            }
+                            result = `${icon} ${nestedTestName}\n`;
+                            testResults += result;
+                        });
+                    }
                 });
             }
         });
