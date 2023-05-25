@@ -64,7 +64,7 @@ function parseTestResults() {
                     else if (nestedTestStatus === 'failed') {
                         icon = ':red_circle:';
                     }
-                    result = `              ${icon} ${nestedTestName}\n`;
+                    result = `      ${icon} ${nestedTestName}\n`;
                     testResults += result;
                 });
             }
