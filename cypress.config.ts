@@ -6,6 +6,23 @@ import browserify from '@badeball/cypress-cucumber-preprocessor/browserify';
 import dotenv from 'dotenv';
 dotenv.config();
 
+async function setupNodeEvents(
+	on: Cypress.PluginEvents,
+	config: Cypress.PluginConfigOptions
+): Promise<Cypress.PluginConfigOptions> {
+	await addCucumberPreprocessorPlugin(on, config);
+	on(
+		'file:preprocessor',
+		browserify(config, {
+			typescript: require.resolve('typescript'),
+		})
+	);
+
+	allureWriter(on, config);
+
+	return config;
+}
+
 module.exports = defineConfig({
 	e2e: {
 		specPattern: ['**/*.feature', '**/*cy.ts'],
@@ -18,21 +35,6 @@ module.exports = defineConfig({
 			email: process.env.EMAIL,
 			password: process.env.PASSWORD
 		},
-		async setupNodeEvents(
-			on: Cypress.PluginEvents,
-			config: Cypress.PluginConfigOptions
-		): Promise<Cypress.PluginConfigOptions> {
-			await addCucumberPreprocessorPlugin(on, config);
-			on(
-				'file:preprocessor',
-				browserify(config, {
-					typescript: require.resolve('typescript'),
-				})
-			);
-
-			allureWriter(on, config);
-
-			return config;
-		},
+		setupNodeEvents
 	},
 });
