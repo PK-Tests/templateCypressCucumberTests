@@ -5,3 +5,5 @@ cypress/downloads
 allure-results
 allure-report
 payload-slack-content.json
+.env
+.vscode

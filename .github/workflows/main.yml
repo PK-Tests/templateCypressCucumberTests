@@ -7,6 +7,10 @@ on:
   schedule:
     - cron: '0 5 * * *'
 
+env:
+  Cypress_email: ${{secrets.EMAIL}}
+  Cypress_password: ${{secrets.PASSWORD}}
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
