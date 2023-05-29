@@ -10,8 +10,8 @@ Given('chooses "type" section', () => {
 });
 
 When('user fills out credentaials', () => {
-	cy.get('#email1').type('example.email@nonexistinggmail.com');
-	cy.get('#password1').type('XRSIJH76553*/"/(:');
+	cy.get('#email1').type(Cypress.env('email'));
+	cy.get('#password1').type(Cypress.env('password'));
 });
 
 When('confirms form', () => {
