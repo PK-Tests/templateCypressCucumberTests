@@ -7,6 +7,10 @@ on:
   schedule:
     - cron: '0 5 * * *'
 
+env:
+  Cypress_email: ${{secrets.EMAIL}}
+  Cypress_password: ${{secrets.PASSWORD}}
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -14,7 +18,7 @@ jobs:
     steps:
       # Uses pre-existing github action to initialize pipeline
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Run all tests
       - name: Cypress run
@@ -28,21 +32,21 @@ jobs:
           #   envVariable=${{ secrets.ENV_VARIABLE_NAME }}
 
       - name: Save screenshots on fail
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
 
       - name: Save videos
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: cypress-videos
           path: cypress/videos
 
       - name: Get Allure history
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         if: always()
         continue-on-error: true
         with:
