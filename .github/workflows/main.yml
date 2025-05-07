@@ -7,6 +7,10 @@ on:
   schedule:
     - cron: '0 5 * * *'
 
+env:
+  Cypress_email: ${{secrets.EMAIL}}
+  Cypress_password: ${{secrets.PASSWORD}}
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -14,7 +18,7 @@ jobs:
     steps:
       # Uses pre-existing github action to initialize pipeline
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Run all tests
       - name: Cypress run
@@ -42,7 +46,7 @@ jobs:
           path: cypress/videos
 
       - name: Get Allure history
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         if: always()
         continue-on-error: true
         with:
